@@ -57,7 +57,7 @@ cd Cifrado
 En Windows (Command Prompt):
 ```cmd
 cd Cifrado
-.\Scripts\activate.bat
+.\Scripts\activate.ps1
 ```
 
 En Linux/Mac:
