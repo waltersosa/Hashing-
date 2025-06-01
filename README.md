@@ -1,84 +1,89 @@
 # Proyecto de Criptografía: Hashing & Access Authentication Code
 
-Este proyecto contiene los avances realizados en clase sobre Hashing y Access Authentication Code (HMAC), implementados en Python, junto con una tarea para el hogar en JavaScript.
+## Descripción General
+Este proyecto contiene dos componentes principales:
+1. Implementaciones en Python realizadas en clase para comprender la generación de hashes y códigos de autenticación de mensajes (MAC)
+2. Implementación en JavaScript como actividad complementaria para reforzar los conceptos en otro lenguaje
 
-## Objetivos del Proyecto
-- Aplicar funciones criptográficas básicas en JavaScript
-- Simular el comportamiento de un MAC (Message Authentication Code)
-- Explorar el uso de JavaScript para seguridad en mensajes
-
-## Actividad de JavaScript (Tarea)
-### Instrucciones
-1. **Obtención de Hash**
-   - Implementar la generación de hash de una cadena de texto usando JavaScript
-   - Utilizar SHA-256 mediante `crypto.subtle.digest` o la librería `crypto` de Node.js
-   - Mostrar en consola tanto el texto original como el hash resultante
-   - Código debe estar comentado y estructurado claramente
-
-2. **Simulación de MAC (Message Authentication Code)**
-   - Simular el intercambio de mensajes mediante archivos locales
-   - Cada mensaje debe contener:
-     - Texto original
-     - Hash/HMAC correspondiente
-     - Clave secreta (simulada)
-   - Incluir explicación del proceso y contenido
-
-## Estructura del Proyecto
+## Componentes del Proyecto
 
 ### Implementaciones en Python (Clase)
 - `Python/Hola.py`: Implementación básica de Python
 - `Python/HolaHMac.py`: Implementación de HMAC (Hash-based Message Authentication Code) usando SHA-256
 - `Python/Simetrico/`: Directorio que contiene implementaciones de cifrado simétrico
 
-### Implementaciones en JavaScript (Tarea)
-- `JavaScript/HolaHMac.js`: Implementación de HMAC en JavaScript como tarea para el hogar
+### Implementación en JavaScript (Tarea)
+- `IntercambioMensajes/generarMensaje.js`: Genera mensajes con su correspondiente HMAC
+- `IntercambioMensajes/verificarMensaje.js`: Verifica la integridad de los mensajes recibidos
 
-## Descripción de los Componentes
+## Objetivos de la Actividad en JavaScript
+- Aplicar funciones criptográficas básicas en JavaScript
+- Simular el comportamiento de un MAC (Message Authentication Code)
+- Explorar el uso de JavaScript para seguridad en mensajes
 
-### HMAC en Python
-El archivo `HolaHMac.py` demuestra:
-- Generación de códigos HMAC usando SHA-256
-- Manejo de mensajes y claves secretas
-- Verificación de códigos HMAC
-- Procesamiento de mensajes en formato binario
+## Instrucciones de la Actividad
 
-### Entorno de Desarrollo
-El proyecto utiliza un entorno virtual de Python para gestionar las dependencias, ubicado en el directorio `Cifrado/`.
+### 1. Obtención de Hash
+El estudiante debe:
+- Utilizar SHA-256 mediante `crypto.subtle.digest` o la librería `crypto` de Node.js
+- Mostrar en consola tanto el texto original como el hash resultante
+- Entregar código comentado y estructurado claramente
 
-#### Activación del Entorno Virtual
-Antes de ejecutar cualquier archivo Python, es necesario activar el entorno virtual:
+### 2. Simulación de MAC
+Implementación de un sistema que:
+- Simula el intercambio de mensajes mediante archivos locales
+- Cada mensaje contiene:
+  - Texto original
+  - Hash/HMAC correspondiente
+  - Clave secreta (simulada)
+- Incluye explicación del proceso y contenido
 
-En Windows (PowerShell):
-```powershell
-cd Cifrado
-.\Scripts\Activate.ps1
+## Estructura del Mensaje
+El mensaje se guarda en formato JSON con la siguiente estructura:
+```json
+{
+  "mensaje": "texto del mensaje",
+  "hmac": "código HMAC generado",
+  "timestamp": "fecha y hora de generación"
+}
 ```
 
-En Windows (Command Prompt):
-```cmd
-cd Cifrado
-.\Scripts\activate.ps1
-```
+## Cómo Ejecutar
 
-En Linux/Mac:
+### Python (Clase)
+1. Activar el entorno virtual:
 ```bash
 cd Cifrado
-source Scripts/activate
+.\Scripts\Activate.ps1  # En Windows PowerShell
 ```
 
-Una vez activado el entorno virtual, podrás ejecutar los archivos Python desde cualquier directorio del proyecto.
-
-## Requisitos
-- Python 3.x
-- Node.js (para las implementaciones en JavaScript)
-
-## Uso
-Para ejecutar los ejemplos en Python (después de activar el entorno virtual):
+2. Ejecutar los ejemplos:
 ```bash
 python Python/HolaHMac.py
 ```
 
-Para ejecutar la implementación en JavaScript:
+### JavaScript (Tarea)
+1. Generar un mensaje:
 ```bash
-node JavaScript/HolaHMac.js
-``` 
+node IntercambioMensajes/generarMensaje.js
+```
+
+2. Verificar el mensaje:
+```bash
+node IntercambioMensajes/verificarMensaje.js
+```
+
+## Seguridad
+- La clave secreta es compartida entre el emisor y el receptor
+- El HMAC garantiza que el mensaje no ha sido modificado
+- El timestamp permite verificar la frescura del mensaje
+
+## Notas Importantes
+- En un entorno real, la clave secreta debería ser compartida de forma segura
+- El archivo `mensaje.txt` simula el canal de comunicación
+- La verificación del HMAC asegura la integridad del mensaje
+
+## Requisitos
+- Python 3.x
+- Node.js (para las implementaciones en JavaScript)
+- Entorno virtual de Python (en el directorio `Cifrado/`) 
