@@ -58,6 +58,46 @@ El mensaje se guarda en formato JSON con la siguiente estructura:
 ![Verificación de Mensaje](IntercambioMensajes/images/Verificacion%20de%20mensajes.png)
 *Figura 2: Proceso de verificación del mensaje*
 
+## Diagramas del Proceso
+
+### Flujo General
+```mermaid
+graph TD
+    A[Emisor] -->|1. Genera Mensaje| B[generarMensaje.js]
+    B -->|2. Crea HMAC| C[Archivo mensaje.txt]
+    C -->|3. Envía Mensaje| D[Receptor]
+    D -->|4. Lee Mensaje| E[verificarMensaje.js]
+    E -->|5. Verifica HMAC| F[Resultado Verificación]
+```
+*Figura 3: Diagrama del flujo general del proceso*
+
+### Flujo de Seguridad
+```mermaid
+sequenceDiagram
+    participant E as Emisor
+    participant A as Archivo
+    participant R as Receptor
+    
+    E->>E: Genera Mensaje
+    E->>E: Crea HMAC con clave secreta
+    E->>A: Guarda {mensaje, hmac, timestamp}
+    A->>R: Transmite archivo
+    R->>R: Lee mensaje
+    R->>R: Calcula HMAC
+    R->>R: Compara HMACs
+    R->>R: Verifica timestamp
+```
+*Figura 4: Diagrama de secuencia del proceso de seguridad*
+
+### Ejemplo Concreto
+```mermaid
+graph LR
+    A[Entrada] -->|Mensaje: 'Santiago secreto'| B[Generación]
+    B -->|Clave: 'sosamejia'| C[HMAC]
+    C -->|Verificación| D[Salida: Mensaje Válido]
+```
+*Figura 5: Ejemplo concreto del proceso con datos reales*
+
 ## Cómo Ejecutar
 
 ### Python (Clase)
