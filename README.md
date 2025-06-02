@@ -5,6 +5,16 @@ Este proyecto contiene dos componentes principales:
 1. Implementaciones en Python realizadas en clase para comprender la generación de hashes y códigos de autenticación de mensajes (MAC)
 2. Implementación en JavaScript como actividad complementaria para reforzar los conceptos en otro lenguaje
 
+## Ejemplos de Ejecución
+
+### Generación de Mensaje
+![Generación de Mensaje](IntercambioMensajes/images/Generar%20mensaje.png)
+*Figura 1: Proceso de generación de mensaje con HMAC*
+
+### Verificación de Mensaje
+![Verificación de Mensaje](IntercambioMensajes/images/Verificacion%20de%20mensajes.png)
+*Figura 2: Proceso de verificación del mensaje*
+
 ## Diagrama del Proceso
 
 ```mermaid

@@ -1,0 +1,5 @@
+{
+  "mensaje": "Santiago secreto",
+  "hmac": "3f77b4f742ba061271e6aba9cb2cb72e73aa13c2d06c9c22e627939823f143c4",
+  "timestamp": "2025-06-02T00:03:19.142Z"
+}
